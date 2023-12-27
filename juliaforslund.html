@@ -24,25 +24,170 @@
         background-color: #6f3a3a;
         color: #eae7df;
       }
+
+      img{
+        margin-top:0.5em;
+      }
+
       h1 {
-        margin: 1em;
+        margin: 0.5em 1em;
+        letter-spacing: 0.02em;
         font-size: 3em;
         font-family: "MedievalSharp", serif;
+      }
+
+      p#intro {
+        font-size: 1.2em;
+        margin: 2em;
+      }
+
+      div.question {
+        background: #725d52;
+        margin: 1em auto;
+        border-radius: 30px;
+        padding: 80px 2em;
+        max-width: 70vw;
+        border: 1px solid #725d52;
+        box-shadow: 0.5px 1px 1px 1px rgba(66, 55, 49, 0.8);
+      }
+
+      div.question input {
+        margin: 1em 0.5em;
+      }
+
+      div.question input[type="radio"], div.question input[type="checkbox"]{
+        accent-color: #474538;
+      }
+
+      textarea {
+        font-family: "Lora", serif;
+        padding: 0.5em;
+        width: 50vw;
+        min-height:2.5em;
+        resize: vertical;
+        margin: 1em;
+      }
+
+      div#details input {
+        margin: 0.5em;
+      }
+
+      #details label {
+        display: block;
+      }
+
+      input[type="text"] {
+        font-family: "Lora", serif;
+        width: 30vw;
+        padding: 0.5em;
+      }
+
+      form input[type="submit"] {
+        background: #474538;
+        color: #eae7df;
+        font-family: "Lora", serif;
+        font-weight: bold;
+        font-size: 1.1em;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        width: 12em;
+        padding: 1em;
+        margin: 1em;
+        border-radius: 30px;
+        border: 1px solid #474538;
+        box-shadow: 0.5px 1px 1px 1px rgba(33, 33, 28, 0.8);
+      }
+
+      form input[type="submit"]:focus,
+      form input[type="submit"]:hover {
+        transform: scale(1.1);
       }
     </style>
   </head>
   <body>
-    <h1>Mythical Creatures &#38 Beings</h1>
-    <p>
+    <img src="werewolf.png" alt="Werewolf">
+    <h1>Mythical Creatures &#38; Beings</h1>
+    <p id="intro">
       Welcome to a quiz about mythical creatures and beings found in various
       cultures and fairytales.
     </p>
-    <!--
-        FORM TO BE WRITTEN HERE
-        fieldset for name and email input
-        fieldset for quiz questions
-        submit button
-    -->
+    <form
+      id="quiz"
+      action="mailto:julia.forslund0016@stud.hkr.se"
+      method="post"
+      enctype="text/plain"
+    >
+      <div class="question" id="Q1">
+        <p>
+          In Greek mythology, what is the three-headed creature with one head of
+          a lion, one of a snake, and another of a goat called?
+        </p>
+        <input type="radio" name="Q1" />Minotaur
+        <input type="radio" name="Q1" class="correct" />Chimera
+        <input type="radio" name="Q1" />Hydra
+        <input type="radio" name="Q1" />Manticore
+      </div>
+      <div class="question" id="Q2">
+        <p>
+          In Norse mythology, what is the name of Odin's eight-legged horse?
+        </p>
+        <input type="radio" name="Q2" class="correct" />Sleipnir
+        <input type="radio" name="Q2"/>Fenrir <input type="radio" name="Q2" />Jörmungandr
+        <input type="radio" name="Q2"/>Huginn
+      </div>
+      <div class="question" id="Q3">
+        <p>
+          In Egyptian mythology, what animals are the Griffin a combination of?
+        </p>
+        <input type="checkbox" class="correct" />Lion
+        <input type="checkbox" />Camel
+        <input type="checkbox" class="correct" />Eagle
+        <input type="checkbox" />Crocodile <input type="checkbox" />Snake
+      </div>
+      <div class="question" id="Q4">
+        <p>
+          Select all the mythical creatures that are a part of Celtic mythology:
+        </p>
+        <input type="checkbox" />Pegasus
+        <input type="checkbox" class="correct" />Banshee
+        <input type="checkbox" class="correct" />Púca
+        <input type="checkbox" />Serpopard <input type="checkbox" />Feilian
+      </div>
+      <div class="question" id="Q5">
+        <p>
+          What are the names of the 7 dwarfs in the classic Disney animated film
+          &lsquo;Snow White and the Seven Dwarfs&rsquo;?
+        </p>
+        <textarea
+          name="dwarfs"
+          placeholder="Write your answer here..."
+        ></textarea>
+      </div>
+      <div id="details">
+        <label for="fname">First Name:</label>
+        <input
+          type="text"
+          id="fname"
+          name="fname"
+          placeholder="Firstname"
+        /><br />
+        <label for="lname">Last Name:</label>
+        <input
+          type="text"
+          id="lname"
+          name="lname"
+          placeholder="Lastname"
+        /><br />
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="example@mail.com"
+        /><br />
+      </div>
+      <input type="submit" value="Submit Quiz" />
+    </form>
     <div id="displayResult"></div>
     <script src="juliaforslund.js"></script>
   </body>
