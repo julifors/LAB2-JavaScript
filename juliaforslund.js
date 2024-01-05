@@ -15,60 +15,47 @@ personalForm.addEventListener("submit", (event) => {
 
   let nameFormat = /^[a-zA-Z]+$/;
   let emailFormat =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
 
-  if (
-    fname.value.match(nameFormat) &&
-    lname.value.match(nameFormat) &&
-    email.value.match(emailFormat)
-  ) {
-    persInfoVal.textContent =
-      "Your information has been successfully submitted!";
-  }
-
-  if (
-    !fname.value.match(nameFormat) &&
-    lname.value.match(nameFormat) &&
-    email.value.match(emailFormat)
-  ) {
-    fnameVal.textContent = "Invalid First Name Format!";
-    persInfoVal.textContent = "Submission unsuccessful. Try Again!";
-  }
-
-  if (
-    fname.value.match(nameFormat) &&
-    !lname.value.match(nameFormat) &&
-    email.value.match(emailFormat)
-  ) {
-    lnameVal.textContent = "Invalid Last Name Format!";
-    persInfoVal.textContent = "Submission unsuccessful. Try Again!";
-  }
-
-  if (
-    fname.value.match(nameFormat) &&
-    lname.value.match(nameFormat) &&
-    !email.value.match(emailFormat)
-  ) {
-    emailVal.textContent = "Invalid Email Format!";
-    persInfoVal.textContent = "Submission unsuccessful. Try Again!";
+  // Validation for fname field - required + contain only letters
+  if (fname.value.match(nameFormat)) {
+    fnameVal.textContent = " ";
   } else {
-    persInfoVal.textContent = "Submission unsuccessful due to missing or invalid information. Try Again!";
+    fnameVal.textContent = "Invalid Format.";
+    persInfoVal.textContent = "Submission unsuccessful. Try Again!";
+    persInfoVal.style.color = "#ffd700";
+  }
+
+  // Validation for lname field - required + contain only letters
+  if (lname.value.match(nameFormat)) {
+    lnameVal.textContent = " ";
+  } else {
+    lnameVal.textContent = "Invalid Format.";
+    persInfoVal.textContent = "Submission unsuccessful. Try Again!";
+    persInfoVal.style.color = "#ffd700";
+  }
+
+  // Validation for email field - required + only valid format allowed
+  if (email.value.match(emailFormat)) {
+    emailVal.textContent = " ";
+  } else {
+    emailVal.textContent = "Please Enter A Valid Email Address.";
+    persInfoVal.textContent = "Submission Unsuccessful. Try Again!";
+    persInfoVal.style.color = "#ffd700";
+  }
+
+  // If all validation is passed, success message is shown
+  if (
+    fname.value.match(nameFormat) &&
+    lname.value.match(nameFormat) &&
+    email.value.match(emailFormat)
+  ) {
+    persInfoVal.textContent = "Your information was successfully submitted!";
+    persInfoVal.style.color = "#2ecc71";
   }
 });
 
-// Validation for fname and lname fields - required + contain only letters
-// use regular expression to match input to valid format
-// if not valid or empty
-// show error message text - written in document under the incorrect field
-// do not submit
-// else return input
-
-// Validation for email field - valid format
-// use regular expression to match input to valid format
-// if not valid or empty
-// show error message text - written in document under the incorrect field
-// do not submit
-// else return input
+// QUIZ
 
 // Validation required questions not left unanswered
 // validation to be done when submit button is clicked
