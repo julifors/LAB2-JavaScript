@@ -1,6 +1,4 @@
-// get all required document elements for script and save in variables
-
-// Personal Form Validation
+// PERSONAL FORM VALIDATION
 const personalForm = document.getElementById("personalForm");
 const fname = document.getElementById("fname");
 const lname = document.getElementById("lname");
@@ -50,12 +48,27 @@ personalForm.addEventListener("submit", (event) => {
     lname.value.match(nameFormat) &&
     email.value.match(emailFormat)
   ) {
-    persInfoVal.textContent = "Your information was successfully submitted!";
+    persInfoVal.textContent = "Your Information Was Successfully Submitted!";
     persInfoVal.style.color = "#2ecc71";
   }
 });
 
-// QUIZ
+// QUIZ FORM VALIDATION
+const quiz = document.getElementById("quiz");
+const quizVal = document.getElementById("quizVal");
+const quizResult = document.getElementById("quizResult");
+
+const Q1val = document.getElementById("Q1val");
+const Q2val = document.getElementById("Q2val");
+const Q3val = document.getElementById("Q3val");
+const Q4val = document.getElementById("Q4val");
+const Q5val = document.getElementById("Q5val");
+
+const correctQ1 = document.getElementById("correctQ1");
+const correctQ2 = document.getElementById("correctQ2");
+const correctQ3 = document.getElementById("correctQ3");
+const correctQ4 = document.getElementById("correctQ4");
+const correctQ5 = document.getElementById("correctQ5");
 
 // Validation required questions not left unanswered
 // validation to be done when submit button is clicked
@@ -63,18 +76,34 @@ personalForm.addEventListener("submit", (event) => {
 // if errors corrected hide error message
 // do not submit
 // if no errors show success message
+quiz.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-// SCORE AND CORRECT ANSWERS
-// Calculating total score
-// variable count
-// label correct answers (radio, checkbox)
-// for open-ended question: check if correct answers in input
+  // getting user answers
+  const inputQ1 = document.querySelector('input[name="Q1"]:checked');
+  const inputQ2 = document.querySelector('input[name="Q2"]:checked');
+  const inputQ3 = document.querySelectorAll('input[name="Q3"]:checked');
+  const inputQ4 = document.querySelectorAll('input[name="Q4"]:checked');
+  const inputQ5 = document.getElementById("Q5");
 
-// Show result of quiz
-// no. correct answers out of total no. of answers
-// display in displayResult div
+  // SCORE AND CORRECT ANSWERS
+  // Calculating total score
+  // label correct answers (radio, checkbox)
 
-// Correct answers display
-// show correct answers on the page
-// show correct answers at the end of the quiz
-// mark or write correct answer in green on/by/under the question
+  // for open-ended question: check if correct answers in input
+
+  // Show result of quiz
+  // no. correct answers out of total no. of answers
+  // display in quizResult div
+
+  // Correct answers display
+  // show correct answers on the page
+  // show correct answers at the end of the quiz
+  // mark or write correct answer in green on/by/under the question
+  correctQ1.textContent = "Correct Answer: Chimera";
+  correctQ2.textContent = "Correct Answer: Sleipnir";
+  correctQ3.textContent = "Correct Answer: Lion + Eagle";
+  correctQ4.textContent = "Correct Answer: Banshee + Púca";
+  correctQ5.textContent =
+    "Correct Answer: Doc, Grumpy, Happy, Sleepy, Bashful, Sneezy, Dopey";
+});

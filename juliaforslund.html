@@ -47,7 +47,7 @@
         margin: 2em;
       }
 
-      /* STYLING PERSONAL FORM */
+      /* STYLING PERSONAL FORM + BOTH SUBMIT BUTTONS */
       div#details input {
         margin: 0.5em;
       }
@@ -66,7 +66,34 @@
         color: #ffd700;
       }
 
-      /* STYLING QUIZ FORM + SOME STYLING FOR BOTH FORMS */
+      input[type="text"] {
+        font-family: "Lora", serif;
+        width: 30vw;
+        padding: 0.5em;
+      }
+
+      form input[type="submit"] {
+        background: #474538;
+        color: #eae7df;
+        font-family: "Lora", serif;
+        font-weight: bold;
+        font-size: 1.1em;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        width: 12em;
+        padding: 1em;
+        margin: 1em;
+        border-radius: 30px;
+        border: 1px solid #474538;
+        box-shadow: 0.5px 1px 1px 1px rgba(33, 33, 28, 0.8);
+      }
+
+      form input[type="submit"]:focus,
+      form input[type="submit"]:hover {
+        transform: scale(1.1);
+      }
+
+      /* STYLING QUIZ FORM */
 
       div.question {
         background: #725d52;
@@ -96,31 +123,17 @@
         margin: 1em;
       }
 
-      input[type="text"] {
-        font-family: "Lora", serif;
-        width: 30vw;
-        padding: 0.5em;
-      }
-
-      form input[type="submit"] {
-        background: #474538;
-        color: #eae7df;
-        font-family: "Lora", serif;
-        font-weight: bold;
-        font-size: 1.1em;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        width: 12em;
-        padding: 1em;
+      div.QVal{
         margin: 1em;
-        border-radius: 30px;
-        border: 1px solid #474538;
-        box-shadow: 0.5px 1px 1px 1px rgba(33, 33, 28, 0.8);
+        font-size: 0.8em;
+        color: #ffd700;
       }
-
-      form input[type="submit"]:focus,
-      form input[type="submit"]:hover {
-        transform: scale(1.1);
+      
+      div.correctQ{
+        margin-right:1em;
+        max-width:30vw;
+        text-align:right;
+        color: #2ecc71;
       }
     </style>
   </head>
@@ -169,69 +182,70 @@
     <form
       id="quiz"
     >
-      <div class="question" id="Q1">
+      <div class="question">
         <h2>Question 1</h2>
         <p>
           In Greek mythology, what is the three-headed creature with one head of
           a lion, one of a snake, and another of a goat called?
         </p>
-        <input type="radio" name="Q1">Minotaur
-        <input type="radio" name="Q1" class="correct">Chimera
-        <input type="radio" name="Q1">Hydra
-        <input type="radio" name="Q1">Manticore
-        <div id="Q1val"></div>
-        <div id="correctQ1"></div>
+        <input type="radio" name="Q1" value="Minotaur">Minotaur
+        <input type="radio" name="Q1" value="Chimera">Chimera
+        <input type="radio" name="Q1" value="Hydra">Hydra
+        <input type="radio" name="Q1" value="Manticore">Manticore
+        <div id="Q1val" class="QVal">TEST</div>
+        <div id="correctQ1" class="correctQ"></div>
       </div>
-      <div class="question" id="Q2">
+      <div class="question">
         <h2>Question 2</h2>
         <p>
           In Norse mythology, what is the name of Odin's eight-legged horse?
         </p>
-        <input type="radio" name="Q2" class="correct">Sleipnir
-        <input type="radio" name="Q2">Fenrir
-        <input type="radio" name="Q2">Jörmungandr
-        <input type="radio" name="Q2">Huginn
-        <div id="Q2val"></div>
-        <div id="correctQ2"></div>
+        <input type="radio" name="Q2" value="Sleipnir">Sleipnir
+        <input type="radio" name="Q2" value="Fenrir">Fenrir
+        <input type="radio" name="Q2" value="Jörmungandr">Jörmungandr
+        <input type="radio" name="Q2" value="Huginn">Huginn
+        <div id="Q2val" class="QVal"></div>
+        <div id="correctQ2" class="correctQ"></div>
       </div>
-      <div class="question" id="Q3">
+      <div class="question">
         <h2>Question 3</h2>
         <p>
           In Egyptian mythology, what animals are the Griffin a combination of?
         </p>
-        <input type="checkbox" class="correct">Lion
-        <input type="checkbox">Camel
-        <input type="checkbox" class="correct">Eagle
-        <input type="checkbox">Crocodile 
-        <input type="checkbox">Snake
-        <div id="Q3val"></div>
-        <div id="correctQ3"></div>
+        <input type="checkbox" value="Lion">Lion
+        <input type="checkbox" value="Camel">Camel
+        <input type="checkbox" value="Eagle">Eagle
+        <input type="checkbox" value="Crocodile">Crocodile 
+        <input type="checkbox" value="Snake">Snake
+        <div id="Q3val" class="QVal"></div>
+        <div id="correctQ3" class="correctQ"></div>
       </div>
-      <div class="question" id="Q4">
+      <div class="question">
         <h2>Question 4</h2>
         <p>
           Select all the mythical creatures that are a part of Celtic mythology:
         </p>
-        <input type="checkbox">Pegasus
-        <input type="checkbox" class="correct">Banshee
-        <input type="checkbox" class="correct">Púca
-        <input type="checkbox">Serpopard 
-        <input type="checkbox">Feilian
-        <div id="Q4val"></div>
-        <div id="correctQ4"></div>
+        <input type="checkbox" value="Pegasus">Pegasus
+        <input type="checkbox" value="Banshee">Banshee
+        <input type="checkbox" value="Púca">Púca
+        <input type="checkbox" value="Serpopard">Serpopard 
+        <input type="checkbox" value="Feilian">Feilian
+        <div id="Q4val" class="QVal"></div>
+        <div id="correctQ4" class="correctQ"></div>
       </div>
-      <div class="question" id="Q5">
+      <div class="question">
         <h2>Question 5</h2>
         <p>
           What are the names of the 7 dwarfs in the classic Disney animated film
           &lsquo;Snow White and the Seven Dwarfs&rsquo;?
         </p>
         <textarea
+          id = "Q5"
           name="dwarfs"
           placeholder="Write your answer here..."
         ></textarea>
-        <div id="Q5val"></div>
-        <div id="correctQ5"></div>
+        <div id="Q5val" class="QVal"></div>
+        <div id="correctQ5" class="correctQ"></div>
       </div>
       <input type="submit" value="Submit Quiz">
     </form>
