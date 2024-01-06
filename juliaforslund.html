@@ -47,7 +47,7 @@
         margin: 2em;
       }
 
-      /* STYLING PERSONAL FORM + BOTH SUBMIT BUTTONS */
+      /* STYLING THE FORMS */
       div#details input {
         margin: 0.5em;
       }
@@ -58,6 +58,7 @@
 
       div#persInfoVal {
         margin-bottom: 4em;
+        max-width:60vw;
       }
 
       div#fnameVal,
@@ -95,9 +96,7 @@
         transform: scale(1.1);
       }
 
-      /* STYLING QUIZ FORM */
-
-      div.question {
+      div.question, div#details {
         background: #725d52;
         margin: 1em auto;
         border-radius: 30px;
@@ -147,7 +146,7 @@
       }
 
       div#quizVal {
-        margin: 1em;
+        max-width: 60vw;
       }
 
       div#quizResult {
@@ -166,8 +165,10 @@
     <h1>Mythical Creatures &#38; Beings</h1>
     <p id="intro">
       Welcome to a quiz about mythical creatures and beings found in various
-      cultures and fairytales.
+      cultures and fairytales. Before taking this quiz it is required that you provide your first name, last
+        name and email.
     </p>
+    <p></p>
     <form id="personalForm">
       <div id="details">
         <h2>Personal Info</h2>
@@ -176,7 +177,7 @@
           type="text"
           id="fname"
           name="fname"
-          placeholder="Firstname"
+          placeholder="First Name"
         /><br />
         <div id="fnameVal"></div>
         <label for="lname">Last Name:</label>
@@ -184,7 +185,7 @@
           type="text"
           id="lname"
           name="lname"
-          placeholder="Lastname"
+          placeholder="Last Name"
         /><br />
         <div id="lnameVal"></div>
         <label for="email">Email:</label>
@@ -198,8 +199,6 @@
       </div>
       <input type="submit" value="Submit Info" />
       <div id="persInfoVal">
-        Partaking in this quiz requires that you provide your first name, last
-        name and email.
       </div>
     </form>
     <form id="quiz">
@@ -287,7 +286,6 @@
           name="dwarfs"
           placeholder="Write your answer here..."
         ></textarea>
-        <div id="Q6val" class="QVal"></div>
         <div id="correctQ6" class="correctQ"></div>
       </div>
       <input type="submit" value="Submit Quiz" />

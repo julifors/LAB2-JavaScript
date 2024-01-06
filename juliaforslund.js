@@ -11,7 +11,7 @@ const persInfoVal = document.getElementById("persInfoVal");
 personalForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  let nameFormat = /^[a-zA-Z]+$/;
+  let nameFormat = /^[a-zA-Z]+(?:[ -][a-zA-Z]+)*$/;
   let emailFormat =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
 
@@ -19,8 +19,9 @@ personalForm.addEventListener("submit", (event) => {
   if (fname.value.match(nameFormat)) {
     fnameVal.textContent = " ";
   } else {
-    fnameVal.textContent = "Invalid Format.";
-    persInfoVal.textContent = "Submission unsuccessful. Try Again!";
+    fnameVal.textContent =
+      "Please Enter A Valid Name Using Only Letters, Spaces, Or Hyphens.";
+    persInfoVal.textContent = "Submission Unsuccessful. Try Again!";
     persInfoVal.style.color = "#ffd700";
   }
 
@@ -28,8 +29,9 @@ personalForm.addEventListener("submit", (event) => {
   if (lname.value.match(nameFormat)) {
     lnameVal.textContent = " ";
   } else {
-    lnameVal.textContent = "Invalid Format.";
-    persInfoVal.textContent = "Submission unsuccessful. Try Again!";
+    lnameVal.textContent =
+      "Please Enter A Valid Name Using Only Letters, Spaces, Or Hyphens.";
+    persInfoVal.textContent = "Submission Unsuccessful. Try Again!";
     persInfoVal.style.color = "#ffd700";
   }
 
@@ -38,7 +40,8 @@ personalForm.addEventListener("submit", (event) => {
     emailVal.textContent = " ";
   } else {
     emailVal.textContent = "Please Enter A Valid Email Address.";
-    persInfoVal.textContent = "Submission Unsuccessful. Try Again!";
+    persInfoVal.textContent =
+      "Oops! It Seems There Was An Issue With Your Submission. Please Review Your Entries and Try Submitting Again.";
     persInfoVal.style.color = "#ffd700";
   }
 
@@ -90,8 +93,6 @@ quiz.addEventListener("submit", (event) => {
   const inputQ4 = document.querySelectorAll('input[name="Q4"]:checked');
   const inputQ5 = document.querySelectorAll('input[name="Q5"]:checked');
   const inputQ6 = document.getElementById("Q6").value.trim();
-
-
 
   // SCORE AND CORRECT ANSWERS
   // Calculating total score - 12 max points, 1pt per Q1-Q5, 7 max for Q5
@@ -145,44 +146,84 @@ quiz.addEventListener("submit", (event) => {
   ];
 
   // array for storing all used words
-  const usedWords = []
+  const usedWords = [];
 
   // Making input lowercase + Splitting the input into array of words, removing commas and spaces using RegEx
   // inputQ6 already trimmed when getting it!
   const inputWords = inputQ6.toLowerCase().split(/[,\s]+/);
 
   // Checking each word in the input against dwarfNames + checking that word is not already in used words
-  inputWords.forEach(function(word) {
-    if (
-      !usedWords.includes(word) &&
-      dwarfNames.includes(word)
-    ) {
+  inputWords.forEach(function (word) {
+    if (!usedWords.includes(word) && dwarfNames.includes(word)) {
       score++;
       usedWords.push(word); // adding word to used words array
     }
   });
 
-
   // QUIZ VALIDATION
   // Validation required questions not left unanswered (except Q6)
-  // validation to be done when submit button is clicked
   // show error message text if validation error - written in document under the incorrect field
   // if errors corrected hide error message
-  // do not submit
+  let unanswered = 5;
+  if (inputQ1) {
+    unanswered--;
+    Q1val.textContent = "";
+  } else {
+    Q1val.textContent = "This Is A Required Question!";
+  }
+  if (inputQ2) {
+    unanswered--;
+    Q2val.textContent = "";
+  } else {
+    Q2val.textContent = "This Is A Required Question!";
+  }
+  if (inputQ3.length > 0) {
+    unanswered--;
+    Q3val.textContent = "";
+  } else {
+    Q3val.textContent = "This Is A Required Question!";
+  }
+  if (inputQ4.length > 0) {
+    unanswered--;
+    Q4val.textContent = "";
+  } else {
+    Q4val.textContent = "This Is A Required Question!";
+  }
+  if (inputQ5.length > 0) {
+    unanswered--;
+    Q5val.textContent = "";
+  } else {
+    Q5val.textContent = "This Is A Required Question!";
+  }
 
-  // Show result of quiz and success message for passing validation
-  quizVal.textContent = "All required questions are answered!";
-  quizVal.style.color = "#2ecc71";
-  quizResult.textContent = `Your Score: ${score} / 12 Points.`;
-  quizResult.style.border = "1px dotted";
+  if (unanswered > 0) {
+    quizVal.textContent =
+      "Please Answer All Required Questions Before Submitting The Form.";
+    quizVal.style.color = "#ffd700";
+    correctQ1.textContent = "";
+    correctQ2.textContent = "";
+    correctQ3.textContent = "";
+    correctQ4.textContent = "";
+    correctQ5.textContent = "";
+    correctQ6.textContent = "";
+    quizResult.textContent = "";
+    quizResult.style.border = "none";
+  } else {
+    // Show result of quiz and success message for passing validation
+    quizVal.textContent =
+      "All Required Questions Are Answered! Thank You For Your Participation!";
+    quizVal.style.color = "#2ecc71";
+    quizResult.textContent = `Your Score: ${score} / 12 Points.`;
+    quizResult.style.border = "1px dotted";
 
-  // Correct answers display
-  // showing correct answers by each question at the end of the quiz
-  correctQ1.textContent = "Correct Answer: Chimera";
-  correctQ2.textContent = "Correct Answer: Sleipnir";
-  correctQ3.textContent = "Correct Answer: Lion + Eagle";
-  correctQ4.textContent = "Correct Answer: Banshee + Púca";
-  correctQ5.textContent = "Correct Answer: Parashurama + Rama + Krishna";
-  correctQ6.textContent =
-    "Correct Answer: Doc, Grumpy, Happy, Sleepy, Bashful, Sneezy, Dopey";
+    // Correct answers display
+    // showing correct answers by each question at the end of the quiz
+    correctQ1.textContent = "Correct Answer: Chimera";
+    correctQ2.textContent = "Correct Answer: Sleipnir";
+    correctQ3.textContent = "Correct Answer: Lion + Eagle";
+    correctQ4.textContent = "Correct Answer: Banshee + Púca";
+    correctQ5.textContent = "Correct Answer: Parashurama + Rama + Krishna";
+    correctQ6.textContent =
+      "Correct Answer: Doc, Grumpy, Happy, Sleepy, Bashful, Sneezy, Dopey";
+  }
 });
