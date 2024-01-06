@@ -60,7 +60,9 @@
         margin-bottom: 4em;
       }
 
-      div#fnameVal, div#lnameVal, div#emailVal{
+      div#fnameVal,
+      div#lnameVal,
+      div#emailVal {
         margin-bottom: 1em;
         font-size: 0.8em;
         color: #ffd700;
@@ -99,7 +101,7 @@
         background: #725d52;
         margin: 1em auto;
         border-radius: 30px;
-        padding: 80px 2em;
+        padding: 50px 2em;
         max-width: 70vw;
         border: 1px solid #725d52;
         box-shadow: 0.5px 1px 1px 1px rgba(66, 55, 49, 0.8);
@@ -123,30 +125,50 @@
         margin: 1em;
       }
 
-      div.QVal{
+      p.pointsInfo {
+        text-align: left;
+        font-size: 0.8em;
+        font-weight: bold;
+        margin-bottom: 1em;
+        color: black;
+      }
+
+      div.QVal {
         margin: 1em;
         font-size: 0.8em;
         color: #ffd700;
       }
-      
-      div.correctQ{
-        margin-right:1em;
-        max-width:30vw;
-        text-align:right;
+
+      div.correctQ {
+        margin-right: 1em;
+        max-width: 30vw;
+        text-align: right;
         color: #2ecc71;
+      }
+
+      div#quizVal {
+        margin: 1em;
+      }
+
+      div#quizResult {
+        margin: 1em auto;
+        letter-spacing: 0.03em;
+        font-family: "MedievalSharp", serif;
+        font-size: 1.6em;
+        border-radius: 30px;
+        max-width: 50vw;
+        padding: 1em;
       }
     </style>
   </head>
   <body>
-    <img src="werewolf.png" alt="Werewolf">
+    <img src="werewolf.png" alt="Werewolf" />
     <h1>Mythical Creatures &#38; Beings</h1>
     <p id="intro">
       Welcome to a quiz about mythical creatures and beings found in various
       cultures and fairytales.
     </p>
-    <form
-      id="personalForm"
-    >
+    <form id="personalForm">
       <div id="details">
         <h2>Personal Info</h2>
         <label for="fname">First Name:</label>
@@ -155,7 +177,7 @@
           id="fname"
           name="fname"
           placeholder="Firstname"
-        /><br>
+        /><br />
         <div id="fnameVal"></div>
         <label for="lname">Last Name:</label>
         <input
@@ -163,7 +185,7 @@
           id="lname"
           name="lname"
           placeholder="Lastname"
-        /><br>
+        /><br />
         <div id="lnameVal"></div>
         <label for="email">Email:</label>
         <input
@@ -171,34 +193,35 @@
           id="email"
           name="email"
           placeholder="example@mail.com"
-        /><br>
+        /><br />
         <div id="emailVal"></div>
       </div>
-      <input type="submit" value="Submit Info">
+      <input type="submit" value="Submit Info" />
       <div id="persInfoVal">
-        Partaking in this quiz requires that you provide your first name, last name and email.
+        Partaking in this quiz requires that you provide your first name, last
+        name and email.
       </div>
     </form>
-    <form
-      id="quiz"
-    >
+    <form id="quiz">
       <div class="question">
+        <p class="pointsInfo">Single-Choice: Max 1 Point</p>
         <h2>Question 1</h2>
         <p>
           In Greek mythology, what is the three-headed creature with one head of
-          a lion, one of a snake, and another of a goat called?
+          a lion, one of a snake, and another of a goat called? *
         </p>
-        <input type="radio" name="Q1" value="Minotaur">Minotaur
-        <input type="radio" name="Q1" value="Chimera">Chimera
-        <input type="radio" name="Q1" value="Hydra">Hydra
-        <input type="radio" name="Q1" value="Manticore">Manticore
-        <div id="Q1val" class="QVal">TEST</div>
+        <input type="radio" name="Q1" value="Minotaur" />Minotaur
+        <input type="radio" name="Q1" value="Chimera" />Chimera
+        <input type="radio" name="Q1" value="Hydra" />Hydra
+        <input type="radio" name="Q1" value="Manticore" />Manticore
+        <div id="Q1val" class="QVal"></div>
         <div id="correctQ1" class="correctQ"></div>
       </div>
       <div class="question">
+        <p class="pointsInfo">Single-Choice: Max 1 Point</p>
         <h2>Question 2</h2>
         <p>
-          In Norse mythology, what is the name of Odin's eight-legged horse?
+          In Norse mythology, what is the name of Odin's eight-legged horse? *
         </p>
         <input type="radio" name="Q2" value="Sleipnir">Sleipnir
         <input type="radio" name="Q2" value="Fenrir">Fenrir
@@ -208,46 +231,66 @@
         <div id="correctQ2" class="correctQ"></div>
       </div>
       <div class="question">
+        <p class="pointsInfo">Multiple-Choice: Max 1 Point</p>
         <h2>Question 3</h2>
         <p>
           In Egyptian mythology, what animals are the Griffin a combination of?
+          *
         </p>
-        <input type="checkbox" value="Lion">Lion
-        <input type="checkbox" value="Camel">Camel
-        <input type="checkbox" value="Eagle">Eagle
-        <input type="checkbox" value="Crocodile">Crocodile 
-        <input type="checkbox" value="Snake">Snake
+        <input type="checkbox" name="Q3" value="Lion" />Lion
+        <input type="checkbox" name="Q3" value="Camel" />Camel
+        <input type="checkbox" name="Q3" value="Eagle" />Eagle
+        <input type="checkbox" name="Q3" value="Crocodile" />Crocodile
+        <input type="checkbox" name="Q3" value="Snake" />Snake
         <div id="Q3val" class="QVal"></div>
         <div id="correctQ3" class="correctQ"></div>
       </div>
       <div class="question">
+        <p class="pointsInfo">Multiple-Choice: Max 1 Point</p>
         <h2>Question 4</h2>
         <p>
           Select all the mythical creatures that are a part of Celtic mythology:
+          *
         </p>
-        <input type="checkbox" value="Pegasus">Pegasus
-        <input type="checkbox" value="Banshee">Banshee
-        <input type="checkbox" value="Púca">Púca
-        <input type="checkbox" value="Serpopard">Serpopard 
-        <input type="checkbox" value="Feilian">Feilian
+        <input type="checkbox" name="Q4" value="Pegasus" />Pegasus
+        <input type="checkbox" name="Q4" value="Banshee" />Banshee
+        <input type="checkbox" name="Q4" value="Púca" />Púca
+        <input type="checkbox" name="Q4" value="Serpopard" />Serpopard
+        <input type="checkbox" name="Q4" value="Feilian" />Feilian
         <div id="Q4val" class="QVal"></div>
         <div id="correctQ4" class="correctQ"></div>
       </div>
       <div class="question">
+        <p class="pointsInfo">Multiple-Choice: Max 1 Point</p>
         <h2>Question 5</h2>
+        <p>
+          Which of the following are considered incarnations (avatars) of the
+          god Vishnu in Hindu mythology? *
+        </p>
+        <input type="checkbox" name="Q5" value="Parashurama" />Parashurama
+        <input type="checkbox" name="Q5" value="Durga" />Durga
+        <input type="checkbox" name="Q5" value="Rama" />Rama
+        <input type="checkbox" name="Q5" value="Krishna" />Krishna
+        <input type="checkbox" name="Q5" value="Shiva" />Shiva
+        <div id="Q5val" class="QVal"></div>
+        <div id="correctQ5" class="correctQ"></div>
+      </div>
+      <div class="question">
+        <p class="pointsInfo">Open-Ended: Max 7 Points</p>
+        <h2>Bonus Question</h2>
         <p>
           What are the names of the 7 dwarfs in the classic Disney animated film
           &lsquo;Snow White and the Seven Dwarfs&rsquo;?
         </p>
         <textarea
-          id = "Q5"
+          id="Q6"
           name="dwarfs"
           placeholder="Write your answer here..."
         ></textarea>
-        <div id="Q5val" class="QVal"></div>
-        <div id="correctQ5" class="correctQ"></div>
+        <div id="Q6val" class="QVal"></div>
+        <div id="correctQ6" class="correctQ"></div>
       </div>
-      <input type="submit" value="Submit Quiz">
+      <input type="submit" value="Submit Quiz" />
     </form>
     <div id="quizVal"></div>
     <div id="quizResult"></div>

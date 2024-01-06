@@ -53,7 +53,7 @@ personalForm.addEventListener("submit", (event) => {
   }
 });
 
-// QUIZ FORM VALIDATION
+// QUIZ FORM
 const quiz = document.getElementById("quiz");
 const quizVal = document.getElementById("quizVal");
 const quizResult = document.getElementById("quizResult");
@@ -69,41 +69,120 @@ const correctQ2 = document.getElementById("correctQ2");
 const correctQ3 = document.getElementById("correctQ3");
 const correctQ4 = document.getElementById("correctQ4");
 const correctQ5 = document.getElementById("correctQ5");
+const correctQ6 = document.getElementById("correctQ6");
 
-// Validation required questions not left unanswered
-// validation to be done when submit button is clicked
-// show error message text if validation error - written in document under the incorrect field
-// if errors corrected hide error message
-// do not submit
-// if no errors show success message
 quiz.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  // function for iterating checked values for checkbox questions and adding to array
+  function getCheckedValues(input) {
+    var checkedValues = [];
+    input.forEach(function (x) {
+      checkedValues.push(x.value);
+    });
+    return checkedValues;
+  }
 
   // getting user answers
   const inputQ1 = document.querySelector('input[name="Q1"]:checked');
   const inputQ2 = document.querySelector('input[name="Q2"]:checked');
   const inputQ3 = document.querySelectorAll('input[name="Q3"]:checked');
   const inputQ4 = document.querySelectorAll('input[name="Q4"]:checked');
-  const inputQ5 = document.getElementById("Q5");
+  const inputQ5 = document.querySelectorAll('input[name="Q5"]:checked');
+  const inputQ6 = document.getElementById("Q6").value.trim();
+
+
 
   // SCORE AND CORRECT ANSWERS
-  // Calculating total score
-  // label correct answers (radio, checkbox)
+  // Calculating total score - 12 max points, 1pt per Q1-Q5, 7 max for Q5
 
-  // for open-ended question: check if correct answers in input
+  let score = 0;
 
-  // Show result of quiz
-  // no. correct answers out of total no. of answers
-  // display in quizResult div
+  // Q1 - Q5
+  if (inputQ1 && inputQ1.value === "Chimera") {
+    score++;
+  }
+  if (inputQ2 && inputQ2.value === "Sleipnir") {
+    score++;
+  }
+  if (
+    getCheckedValues(inputQ3).indexOf("Lion") !== -1 &&
+    getCheckedValues(inputQ3).indexOf("Eagle") !== -1 &&
+    getCheckedValues(inputQ3).indexOf("Camel") === -1 &&
+    getCheckedValues(inputQ3).indexOf("Crocodile") === -1 &&
+    getCheckedValues(inputQ3).indexOf("Snake") === -1
+  ) {
+    score++;
+  }
+  if (
+    getCheckedValues(inputQ4).indexOf("Banshee") !== -1 &&
+    getCheckedValues(inputQ4).indexOf("Púca") !== -1 &&
+    getCheckedValues(inputQ4).indexOf("Pegasus") === -1 &&
+    getCheckedValues(inputQ4).indexOf("Serpopard") === -1 &&
+    getCheckedValues(inputQ4).indexOf("Feilian") === -1
+  ) {
+    score++;
+  }
+  if (
+    getCheckedValues(inputQ5).indexOf("Parashurama") !== -1 &&
+    getCheckedValues(inputQ5).indexOf("Rama") !== -1 &&
+    getCheckedValues(inputQ5).indexOf("Krishna") !== -1 &&
+    getCheckedValues(inputQ5).indexOf("Durga") === -1 &&
+    getCheckedValues(inputQ5).indexOf("Shiva") === -1
+  ) {
+    score++;
+  }
+
+  // Q6 - bonus question
+  const dwarfNames = [
+    "doc",
+    "grumpy",
+    "happy",
+    "sleepy",
+    "bashful",
+    "sneezy",
+    "dopey",
+  ];
+
+  // array for storing all used words
+  const usedWords = []
+
+  // Making input lowercase + Splitting the input into array of words, removing commas and spaces using RegEx
+  // inputQ6 already trimmed when getting it!
+  const inputWords = inputQ6.toLowerCase().split(/[,\s]+/);
+
+  // Checking each word in the input against dwarfNames + checking that word is not already in used words
+  inputWords.forEach(function(word) {
+    if (
+      !usedWords.includes(word) &&
+      dwarfNames.includes(word)
+    ) {
+      score++;
+      usedWords.push(word); // adding word to used words array
+    }
+  });
+
+
+  // QUIZ VALIDATION
+  // Validation required questions not left unanswered (except Q6)
+  // validation to be done when submit button is clicked
+  // show error message text if validation error - written in document under the incorrect field
+  // if errors corrected hide error message
+  // do not submit
+
+  // Show result of quiz and success message for passing validation
+  quizVal.textContent = "All required questions are answered!";
+  quizVal.style.color = "#2ecc71";
+  quizResult.textContent = `Your Score: ${score} / 12 Points.`;
+  quizResult.style.border = "1px dotted";
 
   // Correct answers display
-  // show correct answers on the page
-  // show correct answers at the end of the quiz
-  // mark or write correct answer in green on/by/under the question
+  // showing correct answers by each question at the end of the quiz
   correctQ1.textContent = "Correct Answer: Chimera";
   correctQ2.textContent = "Correct Answer: Sleipnir";
   correctQ3.textContent = "Correct Answer: Lion + Eagle";
   correctQ4.textContent = "Correct Answer: Banshee + Púca";
-  correctQ5.textContent =
+  correctQ5.textContent = "Correct Answer: Parashurama + Rama + Krishna";
+  correctQ6.textContent =
     "Correct Answer: Doc, Grumpy, Happy, Sleepy, Bashful, Sneezy, Dopey";
 });
