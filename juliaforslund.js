@@ -8,10 +8,12 @@ const lnameVal = document.getElementById("lnameVal");
 const emailVal = document.getElementById("emailVal");
 const persInfoVal = document.getElementById("persInfoVal");
 
+let visitorInfoVal = false; // variable for tracking if visitor information is valid before submitting quiz
+
 personalForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  let nameFormat = /^[a-zA-Z]+(?:[ -][a-zA-Z]+)*$/;
+  let nameFormat = /^[a-zA-Z]+$/;
   let emailFormat =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
 
@@ -19,20 +21,14 @@ personalForm.addEventListener("submit", (event) => {
   if (fname.value.match(nameFormat)) {
     fnameVal.textContent = " ";
   } else {
-    fnameVal.textContent =
-      "Please Enter A Valid Name Using Only Letters, Spaces, Or Hyphens.";
-    persInfoVal.textContent = "Submission Unsuccessful. Try Again!";
-    persInfoVal.style.color = "#ffd700";
+    fnameVal.textContent = "Please Enter A Valid Name Using Only Letters.";
   }
 
   // Validation for lname field - required + contain only letters
   if (lname.value.match(nameFormat)) {
     lnameVal.textContent = " ";
   } else {
-    lnameVal.textContent =
-      "Please Enter A Valid Name Using Only Letters, Spaces, Or Hyphens.";
-    persInfoVal.textContent = "Submission Unsuccessful. Try Again!";
-    persInfoVal.style.color = "#ffd700";
+    lnameVal.textContent = "Please Enter A Valid Name Using Only Letters.";
   }
 
   // Validation for email field - required + only valid format allowed
@@ -40,12 +36,10 @@ personalForm.addEventListener("submit", (event) => {
     emailVal.textContent = " ";
   } else {
     emailVal.textContent = "Please Enter A Valid Email Address.";
-    persInfoVal.textContent =
-      "Oops! It Seems There Was An Issue With Your Submission. Please Review Your Entries and Try Submitting Again.";
-    persInfoVal.style.color = "#ffd700";
   }
 
   // If all validation is passed, success message is shown
+
   if (
     fname.value.match(nameFormat) &&
     lname.value.match(nameFormat) &&
@@ -53,6 +47,12 @@ personalForm.addEventListener("submit", (event) => {
   ) {
     persInfoVal.textContent = "Your Information Was Successfully Submitted!";
     persInfoVal.style.color = "#2ecc71";
+    visitorInfoVal = true;
+  } else {
+    persInfoVal.textContent =
+      "Invalid Format. Please Review Your Entries and Try Submitting Again.";
+    persInfoVal.style.color = "#ffd700";
+    visitorInfoVal = false;
   }
 });
 
@@ -77,6 +77,7 @@ const correctQ6 = document.getElementById("correctQ6");
 quiz.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  // QUIZ FORM
   // function for iterating checked values for checkbox questions and adding to array
   function getCheckedValues(input) {
     var checkedValues = [];
@@ -161,69 +162,76 @@ quiz.addEventListener("submit", (event) => {
   });
 
   // QUIZ VALIDATION
-  // Validation required questions not left unanswered (except Q6)
-  // show error message text if validation error - written in document under the incorrect field
-  // if errors corrected hide error message
-  let unanswered = 5;
-  if (inputQ1) {
-    unanswered--;
-    Q1val.textContent = "";
-  } else {
-    Q1val.textContent = "This Is A Required Question!";
-  }
-  if (inputQ2) {
-    unanswered--;
-    Q2val.textContent = "";
-  } else {
-    Q2val.textContent = "This Is A Required Question!";
-  }
-  if (inputQ3.length > 0) {
-    unanswered--;
-    Q3val.textContent = "";
-  } else {
-    Q3val.textContent = "This Is A Required Question!";
-  }
-  if (inputQ4.length > 0) {
-    unanswered--;
-    Q4val.textContent = "";
-  } else {
-    Q4val.textContent = "This Is A Required Question!";
-  }
-  if (inputQ5.length > 0) {
-    unanswered--;
-    Q5val.textContent = "";
-  } else {
-    Q5val.textContent = "This Is A Required Question!";
-  }
+  // Validation for Visitor Info must be passed before submitting Quiz!
+  if (visitorInfoVal === true) {
+    let unanswered = 5;
+    // Validation required questions not left unanswered (except Q6)
+    // show error message text if validation error - written in document under the incorrect field
+    // if errors corrected hide error message
+    if (inputQ1) {
+      unanswered--;
+      Q1val.textContent = "";
+    } else {
+      Q1val.textContent = "This Is A Required Question!";
+    }
+    if (inputQ2) {
+      unanswered--;
+      Q2val.textContent = "";
+    } else {
+      Q2val.textContent = "This Is A Required Question!";
+    }
+    if (inputQ3.length > 0) {
+      unanswered--;
+      Q3val.textContent = "";
+    } else {
+      Q3val.textContent = "This Is A Required Question!";
+    }
+    if (inputQ4.length > 0) {
+      unanswered--;
+      Q4val.textContent = "";
+    } else {
+      Q4val.textContent = "This Is A Required Question!";
+    }
+    if (inputQ5.length > 0) {
+      unanswered--;
+      Q5val.textContent = "";
+    } else {
+      Q5val.textContent = "This Is A Required Question!";
+    }
 
-  if (unanswered > 0) {
+    if (unanswered > 0) {
+      quizVal.textContent =
+        "Please Answer All Required Questions Before Submitting The Quiz.";
+      quizVal.style.color = "#ffd700";
+      correctQ1.textContent = "";
+      correctQ2.textContent = "";
+      correctQ3.textContent = "";
+      correctQ4.textContent = "";
+      correctQ5.textContent = "";
+      correctQ6.textContent = "";
+      quizResult.textContent = "";
+      quizResult.style.border = "none";
+    } else {
+      // Show result of quiz and success message for passing validation
+      quizVal.textContent =
+        "All Required Questions Are Answered! Thank You For Your Participation!";
+      quizVal.style.color = "#2ecc71";
+      quizResult.textContent = `Your Score: ${score} / 12 Points.`;
+      quizResult.style.border = "1px dotted";
+
+      // Correct answers display
+      // showing correct answers by each question at the end of the quiz
+      correctQ1.textContent = "Correct Answer: Chimera";
+      correctQ2.textContent = "Correct Answer: Sleipnir";
+      correctQ3.textContent = "Correct Answer: Lion + Eagle";
+      correctQ4.textContent = "Correct Answer: Banshee + Púca";
+      correctQ5.textContent = "Correct Answer: Parashurama + Rama + Krishna";
+      correctQ6.textContent =
+        "Correct Answer: Doc, Grumpy, Happy, Sleepy, Bashful, Sneezy, Dopey";
+    }
+  } else {
     quizVal.textContent =
-      "Please Answer All Required Questions Before Submitting The Form.";
+      "You Must Provide Valid Visitor Information Before Submitting The Quiz!";
     quizVal.style.color = "#ffd700";
-    correctQ1.textContent = "";
-    correctQ2.textContent = "";
-    correctQ3.textContent = "";
-    correctQ4.textContent = "";
-    correctQ5.textContent = "";
-    correctQ6.textContent = "";
-    quizResult.textContent = "";
-    quizResult.style.border = "none";
-  } else {
-    // Show result of quiz and success message for passing validation
-    quizVal.textContent =
-      "All Required Questions Are Answered! Thank You For Your Participation!";
-    quizVal.style.color = "#2ecc71";
-    quizResult.textContent = `Your Score: ${score} / 12 Points.`;
-    quizResult.style.border = "1px dotted";
-
-    // Correct answers display
-    // showing correct answers by each question at the end of the quiz
-    correctQ1.textContent = "Correct Answer: Chimera";
-    correctQ2.textContent = "Correct Answer: Sleipnir";
-    correctQ3.textContent = "Correct Answer: Lion + Eagle";
-    correctQ4.textContent = "Correct Answer: Banshee + Púca";
-    correctQ5.textContent = "Correct Answer: Parashurama + Rama + Krishna";
-    correctQ6.textContent =
-      "Correct Answer: Doc, Grumpy, Happy, Sleepy, Bashful, Sneezy, Dopey";
   }
 });

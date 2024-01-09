@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=MedievalSharp&display=swap"
       rel="stylesheet"
-    />
+   >
     <title>Quiz Webpage</title>
     <style>
       * {
@@ -47,7 +47,7 @@
         margin: 2em;
       }
 
-      /* STYLING THE FORMS */
+     * STYLING THE FORMS */
       div#details input {
         margin: 0.5em;
       }
@@ -58,7 +58,7 @@
 
       div#persInfoVal {
         margin-bottom: 4em;
-        max-width:60vw;
+        max-width: 60vw;
       }
 
       div#fnameVal,
@@ -96,7 +96,8 @@
         transform: scale(1.1);
       }
 
-      div.question, div#details {
+      div.question,
+      div#details {
         background: #725d52;
         margin: 1em auto;
         border-radius: 30px;
@@ -161,24 +162,24 @@
     </style>
   </head>
   <body>
-    <img src="werewolf.png" alt="Werewolf" />
+    <img src="werewolf.png" alt="Werewolf">
     <h1>Mythical Creatures &#38; Beings</h1>
     <p id="intro">
       Welcome to a quiz about mythical creatures and beings found in various
-      cultures and fairytales. Before taking this quiz it is required that you provide your first name, last
-        name and email.
+      cultures and fairytales. Before taking this quiz it is required that you
+      provide your first name, last name and email.
     </p>
     <p></p>
     <form id="personalForm">
       <div id="details">
-        <h2>Personal Info</h2>
+        <h2>Visitor Information</h2>
         <label for="fname">First Name:</label>
         <input
           type="text"
           id="fname"
           name="fname"
           placeholder="First Name"
-        /><br />
+       >*<br>
         <div id="fnameVal"></div>
         <label for="lname">Last Name:</label>
         <input
@@ -186,7 +187,7 @@
           id="lname"
           name="lname"
           placeholder="Last Name"
-        /><br />
+       >*<br>
         <div id="lnameVal"></div>
         <label for="email">Email:</label>
         <input
@@ -194,12 +195,11 @@
           id="email"
           name="email"
           placeholder="example@mail.com"
-        /><br />
+       >*<br>
         <div id="emailVal"></div>
       </div>
-      <input type="submit" value="Submit Info" />
-      <div id="persInfoVal">
-      </div>
+      <input type="submit" value="Submit Info">
+      <div id="persInfoVal"></div>
     </form>
     <form id="quiz">
       <div class="question">
@@ -209,10 +209,10 @@
           In Greek mythology, what is the three-headed creature with one head of
           a lion, one of a snake, and another of a goat called? *
         </p>
-        <input type="radio" name="Q1" value="Minotaur" />Minotaur
-        <input type="radio" name="Q1" value="Chimera" />Chimera
-        <input type="radio" name="Q1" value="Hydra" />Hydra
-        <input type="radio" name="Q1" value="Manticore" />Manticore
+        <input type="radio" name="Q1" value="Minotaur">Minotaur
+        <input type="radio" name="Q1" value="Chimera">Chimera
+        <input type="radio" name="Q1" value="Hydra">Hydra
+        <input type="radio" name="Q1" value="Manticore">Manticore
         <div id="Q1val" class="QVal"></div>
         <div id="correctQ1" class="correctQ"></div>
       </div>
@@ -236,11 +236,11 @@
           In Egyptian mythology, what animals are the Griffin a combination of?
           *
         </p>
-        <input type="checkbox" name="Q3" value="Lion" />Lion
-        <input type="checkbox" name="Q3" value="Camel" />Camel
-        <input type="checkbox" name="Q3" value="Eagle" />Eagle
-        <input type="checkbox" name="Q3" value="Crocodile" />Crocodile
-        <input type="checkbox" name="Q3" value="Snake" />Snake
+        <input type="checkbox" name="Q3" value="Lion">Lion
+        <input type="checkbox" name="Q3" value="Camel">Camel
+        <input type="checkbox" name="Q3" value="Eagle">Eagle
+        <input type="checkbox" name="Q3" value="Crocodile">Crocodile
+        <input type="checkbox" name="Q3" value="Snake">Snake
         <div id="Q3val" class="QVal"></div>
         <div id="correctQ3" class="correctQ"></div>
       </div>
@@ -251,11 +251,11 @@
           Select all the mythical creatures that are a part of Celtic mythology:
           *
         </p>
-        <input type="checkbox" name="Q4" value="Pegasus" />Pegasus
-        <input type="checkbox" name="Q4" value="Banshee" />Banshee
-        <input type="checkbox" name="Q4" value="Púca" />Púca
-        <input type="checkbox" name="Q4" value="Serpopard" />Serpopard
-        <input type="checkbox" name="Q4" value="Feilian" />Feilian
+        <input type="checkbox" name="Q4" value="Pegasus">Pegasus
+        <input type="checkbox" name="Q4" value="Banshee">Banshee
+        <input type="checkbox" name="Q4" value="Púca">Púca
+        <input type="checkbox" name="Q4" value="Serpopard">Serpopard
+        <input type="checkbox" name="Q4" value="Feilian">Feilian
         <div id="Q4val" class="QVal"></div>
         <div id="correctQ4" class="correctQ"></div>
       </div>
@@ -266,11 +266,11 @@
           Which of the following are considered incarnations (avatars) of the
           god Vishnu in Hindu mythology? *
         </p>
-        <input type="checkbox" name="Q5" value="Parashurama" />Parashurama
-        <input type="checkbox" name="Q5" value="Durga" />Durga
-        <input type="checkbox" name="Q5" value="Rama" />Rama
-        <input type="checkbox" name="Q5" value="Krishna" />Krishna
-        <input type="checkbox" name="Q5" value="Shiva" />Shiva
+        <input type="checkbox" name="Q5" value="Parashurama">Parashurama
+        <input type="checkbox" name="Q5" value="Durga">Durga
+        <input type="checkbox" name="Q5" value="Rama">Rama
+        <input type="checkbox" name="Q5" value="Krishna">Krishna
+        <input type="checkbox" name="Q5" value="Shiva">Shiva
         <div id="Q5val" class="QVal"></div>
         <div id="correctQ5" class="correctQ"></div>
       </div>
@@ -288,7 +288,7 @@
         ></textarea>
         <div id="correctQ6" class="correctQ"></div>
       </div>
-      <input type="submit" value="Submit Quiz" />
+      <input type="submit" value="Submit Quiz">
     </form>
     <div id="quizVal"></div>
     <div id="quizResult"></div>
