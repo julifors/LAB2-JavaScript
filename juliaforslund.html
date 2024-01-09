@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,154 +13,6 @@
       rel="stylesheet"
    >
     <title>Quiz Webpage</title>
-    <style>
-      * {
-        margin: 0 auto;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "Lora", serif;
-        text-align: center;
-        background-color: #6f3a3a;
-        color: #eae7df;
-      }
-
-      img {
-        margin-top: 0.5em;
-      }
-
-      h1 {
-        margin: 0.5em 1em;
-        letter-spacing: 0.02em;
-        font-size: 3em;
-        font-family: "MedievalSharp", serif;
-      }
-
-      h2 {
-        margin-bottom: 1em;
-        font-size: 2em;
-        text-decoration: 2px underline;
-      }
-
-      p#intro {
-        font-size: 1.2em;
-        margin: 2em;
-      }
-
-     * STYLING THE FORMS */
-      div#details input {
-        margin: 0.5em;
-      }
-
-      #details label {
-        display: block;
-      }
-
-      div#persInfoVal {
-        margin-bottom: 4em;
-        max-width: 60vw;
-      }
-
-      div#fnameVal,
-      div#lnameVal,
-      div#emailVal {
-        margin-bottom: 1em;
-        font-size: 0.8em;
-        color: #ffd700;
-      }
-
-      input[type="text"] {
-        font-family: "Lora", serif;
-        width: 30vw;
-        padding: 0.5em;
-      }
-
-      form input[type="submit"] {
-        background: #474538;
-        color: #eae7df;
-        font-family: "Lora", serif;
-        font-weight: bold;
-        font-size: 1.1em;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        width: 12em;
-        padding: 1em;
-        margin: 1em;
-        border-radius: 30px;
-        border: 1px solid #474538;
-        box-shadow: 0.5px 1px 1px 1px rgba(33, 33, 28, 0.8);
-      }
-
-      form input[type="submit"]:focus,
-      form input[type="submit"]:hover {
-        transform: scale(1.1);
-      }
-
-      div.question,
-      div#details {
-        background: #725d52;
-        margin: 1em auto;
-        border-radius: 30px;
-        padding: 50px 2em;
-        max-width: 70vw;
-        border: 1px solid #725d52;
-        box-shadow: 0.5px 1px 1px 1px rgba(66, 55, 49, 0.8);
-      }
-
-      div.question input {
-        margin: 1em 0.5em;
-      }
-
-      div.question input[type="radio"],
-      div.question input[type="checkbox"] {
-        accent-color: #474538;
-      }
-
-      textarea {
-        font-family: "Lora", serif;
-        padding: 0.5em;
-        width: 50vw;
-        min-height: 2.5em;
-        resize: vertical;
-        margin: 1em;
-      }
-
-      p.pointsInfo {
-        text-align: left;
-        font-size: 0.8em;
-        font-weight: bold;
-        margin-bottom: 1em;
-        color: black;
-      }
-
-      div.QVal {
-        margin: 1em;
-        font-size: 0.8em;
-        color: #ffd700;
-      }
-
-      div.correctQ {
-        margin-right: 1em;
-        max-width: 30vw;
-        text-align: right;
-        color: #2ecc71;
-      }
-
-      div#quizVal {
-        max-width: 60vw;
-      }
-
-      div#quizResult {
-        margin: 1em auto;
-        letter-spacing: 0.03em;
-        font-family: "MedievalSharp", serif;
-        font-size: 1.6em;
-        border-radius: 30px;
-        max-width: 50vw;
-        padding: 1em;
-      }
-    </style>
   </head>
   <body>
     <img src="werewolf.png" alt="Werewolf">
@@ -169,8 +22,7 @@
       cultures and fairytales. Before taking this quiz it is required that you
       provide your first name, last name and email.
     </p>
-    <p></p>
-    <form id="personalForm">
+    <form id="quiz">
       <div id="details">
         <h2>Visitor Information</h2>
         <label for="fname">First Name:</label>
@@ -179,7 +31,7 @@
           id="fname"
           name="fname"
           placeholder="First Name"
-       >*<br>
+       ><span class="req">*</span><br>
         <div id="fnameVal"></div>
         <label for="lname">Last Name:</label>
         <input
@@ -187,7 +39,7 @@
           id="lname"
           name="lname"
           placeholder="Last Name"
-       >*<br>
+       ><span class="req">*</span><br>
         <div id="lnameVal"></div>
         <label for="email">Email:</label>
         <input
@@ -195,24 +47,25 @@
           id="email"
           name="email"
           placeholder="example@mail.com"
-       >*<br>
+       ><span class="req">*</span><br>
         <div id="emailVal"></div>
       </div>
-      <input type="submit" value="Submit Info">
-      <div id="persInfoVal"></div>
-    </form>
-    <form id="quiz">
       <div class="question">
         <p class="pointsInfo">Single-Choice: Max 1 Point</p>
         <h2>Question 1</h2>
         <p>
           In Greek mythology, what is the three-headed creature with one head of
-          a lion, one of a snake, and another of a goat called? *
+          a lion, one of a snake, and another of a goat called?
+          <span class="req">*</span>
         </p>
-        <input type="radio" name="Q1" value="Minotaur">Minotaur
-        <input type="radio" name="Q1" value="Chimera">Chimera
-        <input type="radio" name="Q1" value="Hydra">Hydra
-        <input type="radio" name="Q1" value="Manticore">Manticore
+        <input type="radio" id="minotaur" name="Q1" value="Minotaur">
+        <label for="minotaur">Minotaur</label><br>
+        <input type="radio" id="chimera" name="Q1" value="Chimera">
+        <label for="chimera">Chimera</label><br>
+        <input type="radio" id="hydra" name="Q1" value="Hydra">
+        <label for="hydra">Hydra</label><br>
+        <input type="radio" id="manticore" name="Q1" value="Manticore">
+        <label for="manticore">Manticore</label><br>
         <div id="Q1val" class="QVal"></div>
         <div id="correctQ1" class="correctQ"></div>
       </div>
@@ -220,12 +73,17 @@
         <p class="pointsInfo">Single-Choice: Max 1 Point</p>
         <h2>Question 2</h2>
         <p>
-          In Norse mythology, what is the name of Odin's eight-legged horse? *
+          In Norse mythology, what is the name of Odin's eight-legged horse?
+          <span class="req">*</span>
         </p>
-        <input type="radio" name="Q2" value="Sleipnir">Sleipnir
-        <input type="radio" name="Q2" value="Fenrir">Fenrir
-        <input type="radio" name="Q2" value="Jörmungandr">Jörmungandr
-        <input type="radio" name="Q2" value="Huginn">Huginn
+        <input type="radio" id="sleipnir" name="Q2" value="Sleipnir">
+        <label for="sleipnir">Sleipnir</label><br>
+        <input type="radio" id="fenrir" name="Q2" value="Fenrir">
+        <label for="fenrir">Fenrir</label><br>
+        <input type="radio" id="jormungandr" name="Q2" value="Jörmungandr">
+        <label for="jormungandr">Jörmungandr</label><br>
+        <input type="radio" id="huginn" name="Q2" value="Huginn">
+        <label for="huginn">Huginn</label><br>
         <div id="Q2val" class="QVal"></div>
         <div id="correctQ2" class="correctQ"></div>
       </div>
@@ -234,13 +92,18 @@
         <h2>Question 3</h2>
         <p>
           In Egyptian mythology, what animals are the Griffin a combination of?
-          *
+          <span class="req">*</span>
         </p>
-        <input type="checkbox" name="Q3" value="Lion">Lion
-        <input type="checkbox" name="Q3" value="Camel">Camel
-        <input type="checkbox" name="Q3" value="Eagle">Eagle
-        <input type="checkbox" name="Q3" value="Crocodile">Crocodile
-        <input type="checkbox" name="Q3" value="Snake">Snake
+        <input type="checkbox" id="lion" name="Q3" value="Lion">
+        <label for="lion">Lion</label><br>
+        <input type="checkbox" id="camel" name="Q3" value="Camel">
+        <label for="camel">Camel</label><br>
+        <input type="checkbox" id="eagle" name="Q3" value="Eagle">
+        <label for="eagle">Eagle</label><br>
+        <input type="checkbox" id="crocodile" name="Q3" value="Crocodile">
+        <label for="crocodile">Crocodile</label><br>
+        <input type="checkbox" id="snake" name="Q3" value="Snake">
+        <label for="snake">Snake</label><br>
         <div id="Q3val" class="QVal"></div>
         <div id="correctQ3" class="correctQ"></div>
       </div>
@@ -249,13 +112,18 @@
         <h2>Question 4</h2>
         <p>
           Select all the mythical creatures that are a part of Celtic mythology:
-          *
+          <span class="req">*</span>
         </p>
-        <input type="checkbox" name="Q4" value="Pegasus">Pegasus
-        <input type="checkbox" name="Q4" value="Banshee">Banshee
-        <input type="checkbox" name="Q4" value="Púca">Púca
-        <input type="checkbox" name="Q4" value="Serpopard">Serpopard
-        <input type="checkbox" name="Q4" value="Feilian">Feilian
+        <input type="checkbox" id="pegasus" name="Q4" value="Pegasus">
+        <label for="pegasus">Pegasus</label><br>
+        <input type="checkbox" id="banshee" name="Q4" value="Banshee">
+        <label for="banshee">Banshee</label><br>
+        <input type="checkbox" id="puca" name="Q4" value="Púca">
+        <label for="puca">Púca</label><br>
+        <input type="checkbox" id="serpopard" name="Q4" value="Serpopard">
+        <label for="serpopard">Serpopard</label><br>
+        <input type="checkbox" id="feilian" name="Q4" value="Feilian">
+        <label for="feilian">Feilian</label><br>
         <div id="Q4val" class="QVal"></div>
         <div id="correctQ4" class="correctQ"></div>
       </div>
@@ -264,13 +132,18 @@
         <h2>Question 5</h2>
         <p>
           Which of the following are considered incarnations (avatars) of the
-          god Vishnu in Hindu mythology? *
+          god Vishnu in Hindu mythology? <span class="req">*</span>
         </p>
-        <input type="checkbox" name="Q5" value="Parashurama">Parashurama
-        <input type="checkbox" name="Q5" value="Durga">Durga
-        <input type="checkbox" name="Q5" value="Rama">Rama
-        <input type="checkbox" name="Q5" value="Krishna">Krishna
-        <input type="checkbox" name="Q5" value="Shiva">Shiva
+        <input type="checkbox" id="parashurama" name="Q5" value="Parashurama">
+        <label for="parashurama">Parashurama</label><br>
+        <input type="checkbox" id="durga" name="Q5" value="Durga">
+        <label for="durga">Durga</label><br>
+        <input type="checkbox" id="rama" name="Q5" value="Rama">
+        <label for="rama">Rama</label><br>
+        <input type="checkbox" id="krishna" name="Q5" value="Krishna">
+        <label for="krishna">Krishna</label><br>
+        <input type="checkbox" id="shiva" name="Q5" value="Shiva">
+        <label for="shiva">Shiva</label><br>
         <div id="Q5val" class="QVal"></div>
         <div id="correctQ5" class="correctQ"></div>
       </div>

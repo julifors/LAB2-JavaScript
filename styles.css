@@ -1,0 +1,149 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Lora", serif;
+  text-align: center;
+  background-color: #6f3a3a;
+  color: #eae7df;
+}
+
+img {
+  margin-top: 0.5em;
+}
+
+h1 {
+  margin: 0.5em 1em;
+  letter-spacing: 0.02em;
+  font-size: 3em;
+  font-family: "MedievalSharp", serif;
+}
+
+h2 {
+  margin-bottom: 1em;
+  font-size: 2em;
+  text-decoration: 2px underline;
+}
+
+p#intro {
+  font-size: 1.2em;
+  margin: 2em;
+}
+
+/* STYLING THE FORMS */
+div#details input {
+  margin: 0.5em;
+}
+
+#details label {
+  display: block;
+}
+
+div#fnameVal,
+div#lnameVal,
+div#emailVal {
+  margin-bottom: 1em;
+  font-size: 0.8em;
+  color: #ffd700;
+}
+
+span.req {
+  color: #ffd700;
+}
+
+input[type="text"] {
+  font-family: "Lora", serif;
+  width: 30vw;
+  padding: 0.5em;
+}
+
+form input[type="submit"] {
+  background: #474538;
+  color: #eae7df;
+  font-family: "Lora", serif;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  width: 12em;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 30px;
+  border: 1px solid #474538;
+  box-shadow: 0.5px 1px 1px 1px rgba(33, 33, 28, 0.8);
+}
+
+form input[type="submit"]:focus,
+form input[type="submit"]:hover {
+  transform: scale(1.1);
+}
+
+div.question,
+div#details {
+  background: #725d52;
+  margin: 1em auto;
+  border-radius: 30px;
+  padding: 50px 2em;
+  max-width: 70vw;
+  border: 1px solid #725d52;
+  box-shadow: 0.5px 1px 1px 1px rgba(66, 55, 49, 0.8);
+}
+
+div.question {
+  text-align: left;
+}
+
+div.question input {
+  margin: 1.5em 0.5em;
+}
+
+div.question input[type="radio"],
+div.question input[type="checkbox"] {
+  accent-color: #474538;
+}
+
+textarea {
+  font-family: "Lora", serif;
+  padding: 0.5em;
+  width: 50vw;
+  min-height: 2.5em;
+  resize: vertical;
+  margin-top: 1em;
+}
+
+p.pointsInfo {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: black;
+}
+
+div.QVal {
+  margin: 1em;
+  text-align: right;
+  font-size: 0.8em;
+  color: #ffd700;
+}
+
+div.correctQ {
+  margin-right: 1em;
+  max-width: 40vw;
+  text-align: right;
+  color: #2ecc71;
+}
+
+div#quizVal {
+  max-width: 60vw;
+}
+
+div#quizResult {
+  margin: 1em auto;
+  letter-spacing: 0.03em;
+  font-family: "MedievalSharp", serif;
+  font-size: 1.6em;
+  border-radius: 30px;
+  max-width: 50vw;
+  padding: 1em;
+}

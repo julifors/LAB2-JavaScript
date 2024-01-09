@@ -1,62 +1,12 @@
-// PERSONAL FORM VALIDATION
-const personalForm = document.getElementById("personalForm");
+// PERSONAL FORM ELEMENTS
 const fname = document.getElementById("fname");
 const lname = document.getElementById("lname");
 const email = document.getElementById("email");
 const fnameVal = document.getElementById("fnameVal");
 const lnameVal = document.getElementById("lnameVal");
 const emailVal = document.getElementById("emailVal");
-const persInfoVal = document.getElementById("persInfoVal");
 
-let visitorInfoVal = false; // variable for tracking if visitor information is valid before submitting quiz
-
-personalForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  let nameFormat = /^[a-zA-Z]+$/;
-  let emailFormat =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
-
-  // Validation for fname field - required + contain only letters
-  if (fname.value.match(nameFormat)) {
-    fnameVal.textContent = " ";
-  } else {
-    fnameVal.textContent = "Please Enter A Valid Name Using Only Letters.";
-  }
-
-  // Validation for lname field - required + contain only letters
-  if (lname.value.match(nameFormat)) {
-    lnameVal.textContent = " ";
-  } else {
-    lnameVal.textContent = "Please Enter A Valid Name Using Only Letters.";
-  }
-
-  // Validation for email field - required + only valid format allowed
-  if (email.value.match(emailFormat)) {
-    emailVal.textContent = " ";
-  } else {
-    emailVal.textContent = "Please Enter A Valid Email Address.";
-  }
-
-  // If all validation is passed, success message is shown
-
-  if (
-    fname.value.match(nameFormat) &&
-    lname.value.match(nameFormat) &&
-    email.value.match(emailFormat)
-  ) {
-    persInfoVal.textContent = "Your Information Was Successfully Submitted!";
-    persInfoVal.style.color = "#2ecc71";
-    visitorInfoVal = true;
-  } else {
-    persInfoVal.textContent =
-      "Invalid Format. Please Review Your Entries and Try Submitting Again.";
-    persInfoVal.style.color = "#ffd700";
-    visitorInfoVal = false;
-  }
-});
-
-// QUIZ FORM
+// QUIZ FORM ELEMENTS
 const quiz = document.getElementById("quiz");
 const quizVal = document.getElementById("quizVal");
 const quizResult = document.getElementById("quizResult");
@@ -74,8 +24,46 @@ const correctQ4 = document.getElementById("correctQ4");
 const correctQ5 = document.getElementById("correctQ5");
 const correctQ6 = document.getElementById("correctQ6");
 
+let visitorInfoVal = false; // variable for tracking if visitor information is valid before submitting quiz
+
 quiz.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  let nameFormat = /^[a-zA-Z]+$/;
+  let emailFormat =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+
+  // Validation for fname field - required + contain only letters
+  if (fname.value.match(nameFormat)) {
+    fnameVal.textContent = "";
+  } else {
+    fnameVal.textContent = "Please Enter A Valid Name Using Only Letters.";
+  }
+
+  // Validation for lname field - required + contain only letters
+  if (lname.value.match(nameFormat)) {
+    lnameVal.textContent = "";
+  } else {
+    lnameVal.textContent = "Please Enter A Valid Name Using Only Letters.";
+  }
+
+  // Validation for email field - required + only valid format allowed
+  if (email.value.match(emailFormat)) {
+    emailVal.textContent = "";
+  } else {
+    emailVal.textContent = "Please Enter A Valid Email Address.";
+  }
+
+  // If all validation is passed visitorInfoVal is set to true
+  if (
+    fname.value.match(nameFormat) &&
+    lname.value.match(nameFormat) &&
+    email.value.match(emailFormat)
+  ) {
+    visitorInfoVal = true;
+  } else {
+    visitorInfoVal = false;
+  }
 
   // QUIZ FORM
   // function for iterating checked values for checkbox questions and adding to array
@@ -96,8 +84,7 @@ quiz.addEventListener("submit", (event) => {
   const inputQ6 = document.getElementById("Q6").value.trim();
 
   // SCORE AND CORRECT ANSWERS
-  // Calculating total score - 12 max points, 1pt per Q1-Q5, 7 max for Q5
-
+  // Calculating total score - 12 max points, 1pt per Q1-Q5, 7 pts max for Q5
   let score = 0;
 
   // Q1 - Q5
@@ -165,7 +152,7 @@ quiz.addEventListener("submit", (event) => {
   // Validation for Visitor Info must be passed before submitting Quiz!
   if (visitorInfoVal === true) {
     let unanswered = 5;
-    // Validation required questions not left unanswered (except Q6)
+    // Validation - required questions not left unanswered (except Q6)
     // show error message text if validation error - written in document under the incorrect field
     // if errors corrected hide error message
     if (inputQ1) {
@@ -233,5 +220,18 @@ quiz.addEventListener("submit", (event) => {
     quizVal.textContent =
       "You Must Provide Valid Visitor Information Before Submitting The Quiz!";
     quizVal.style.color = "#ffd700";
+    Q1val.textContent = "";
+    Q2val.textContent = "";
+    Q3val.textContent = "";
+    Q4val.textContent = "";
+    Q5val.textContent = "";
+    correctQ1.textContent = "";
+    correctQ2.textContent = "";
+    correctQ3.textContent = "";
+    correctQ4.textContent = "";
+    correctQ5.textContent = "";
+    correctQ6.textContent = "";
+    quizResult.textContent = "";
+    quizResult.style.border = "none";
   }
 });
